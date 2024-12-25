@@ -1,17 +1,27 @@
 package blackjack.view
 
-import blackjack.domain.Dealer
+import blackjack.domain.Deck
 import blackjack.domain.Player
 
-class GameBoardView {
+class GamePlayView {
     companion object {
         @JvmStatic
-        fun play(
+        fun playTurnsForAll(
+            players: List<Player>,
+            deck: Deck,
+        ) {
+            for (player in players) {
+                playTurnsForSingle(player, deck)
+            }
+        }
+
+        @JvmStatic
+        fun playTurnsForSingle(
             player: Player,
-            dealer: Dealer,
+            deck: Deck,
         ) {
             while (isPlay(player)) {
-                playTurn(player, dealer)
+                playTurn(player, deck)
             }
         }
 
@@ -30,9 +40,9 @@ class GameBoardView {
         @JvmStatic
         private fun playTurn(
             player: Player,
-            dealer: Dealer,
+            deck: Deck,
         ): Boolean {
-            player.receiveCard(dealer.drawCard())
+            player.receiveCard(deck.drawCard())
             val cards = player.getCardNames().joinToString(",")
             println("${player.name} : $cards")
 

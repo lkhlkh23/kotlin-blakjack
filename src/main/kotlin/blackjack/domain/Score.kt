@@ -1,7 +1,5 @@
 package blackjack.domain
 
-import blackjack.domain.type.TrumpCard
-
 class Score constructor(var score: Int) {
     companion object {
         @JvmStatic
@@ -12,17 +10,13 @@ class Score constructor(var score: Int) {
         return this.score < SCORE_LIMIT
     }
 
-    fun addNumber(card: TrumpCard) {
-        this.score = card.addNumber(this.score)
+    fun plusScore(score: Int) {
+        this.score += score
     }
 
-    fun addNumberAndBonus(card: TrumpCard) {
-        this.score = card.addNumberAndBonus(this.score)
-    }
-
-    fun subtractBonusIfOverLimit(card: TrumpCard) {
-        if (this.score > SCORE_LIMIT) {
-            this.score = card.subtractBonus(this.score)
+    fun plusScoreIfLessLimit(score: Int) {
+        if (this.score + score <= SCORE_LIMIT) {
+            this.score += score
         }
     }
 }

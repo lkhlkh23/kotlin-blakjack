@@ -1,7 +1,6 @@
 package blackjack.view
 
 import blackjack.domain.Player
-import blackjack.domain.Score
 
 class GameAttendanceView {
     companion object {
@@ -12,7 +11,7 @@ class GameAttendanceView {
 
             return inputs.split(",")
                 .stream()
-                .map { input -> Player(input, ArrayList(), Score(0)) }
+                .map { input -> Player(input) }
                 .toList()
         }
     }

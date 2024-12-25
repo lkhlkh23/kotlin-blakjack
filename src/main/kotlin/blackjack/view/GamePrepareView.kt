@@ -1,6 +1,6 @@
 package blackjack.view
 
-import blackjack.domain.Dealer
+import blackjack.domain.Deck
 import blackjack.domain.Player
 
 class GamePrepareView {
@@ -9,12 +9,12 @@ class GamePrepareView {
         private val INIT_RECEIVED_CARD_COUNT: Int = 2
 
         @JvmStatic
-        fun dealCards(
+        fun prepare(
             players: List<Player>,
-            dealer: Dealer,
+            deck: Deck,
         ) {
             dealAnnounce(players)
-            dealCardsToPlayers(players, dealer)
+            dealCardsToAll(players, deck)
         }
 
         @JvmStatic
@@ -24,25 +24,25 @@ class GamePrepareView {
         }
 
         @JvmStatic
-        private fun dealCardsToPlayers(
+        private fun dealCardsToAll(
             players: List<Player>,
-            dealer: Dealer,
+            deck: Deck,
         ) {
             for (player in players) {
-                dealCardsToPlayer(player, dealer)
+                dealCardsToSingle(player, deck)
             }
         }
 
         @JvmStatic
-        private fun dealCardsToPlayer(
+        private fun dealCardsToSingle(
             player: Player,
-            dealer: Dealer,
+            deck: Deck,
         ) {
             for (i: Int in 1..INIT_RECEIVED_CARD_COUNT) {
-                player.receiveCard(dealer.drawCard())
+                player.receiveCard(deck.drawCard())
             }
 
-            println("${player.name} 카드 : ${player.cards[0]}, ${player.cards[1]}")
+            println("${player.name} 카드 : ${player.cards[0].getFullName()}, ${player.cards[1].getFullName()}")
         }
     }
 }

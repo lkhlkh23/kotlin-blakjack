@@ -5,15 +5,15 @@ import blackjack.domain.Player
 class GameResultView {
     companion object {
         @JvmStatic
-        fun showPlayerScores(players: List<Player>) {
+        fun showScoreForAll(players: List<Player>) {
             for (player in players) {
-                showPlayerScore(player)
+                showScoreForSingle(player)
             }
         }
 
-        private fun showPlayerScore(player: Player) {
+        private fun showScoreForSingle(player: Player) {
             val cards: String = player.getCardNames().joinToString(",")
-            val score: Int = player.getTotalScore()
+            val score: Int = player.getTotalScore().score
             println("${player.name} 카드 : $cards - 결과 : $score")
         }
     }

@@ -4,8 +4,7 @@ import blackjack.domain.type.TrumpCard
 import java.util.LinkedList
 import java.util.Queue
 
-class Dealer {
-    // 카드 보유
+class Deck {
     private var cards: Queue<TrumpCard> = LinkedList()
 
     init {

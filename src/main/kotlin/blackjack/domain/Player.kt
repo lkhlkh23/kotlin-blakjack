@@ -2,23 +2,26 @@ package blackjack.domain
 
 import blackjack.domain.type.TrumpCard
 
-class Player constructor(val name: String, val cards: ArrayList<TrumpCard>, val score: Score) {
+class Player(val name: String) {
+    val cards: ArrayList<TrumpCard> = ArrayList()
+    val score: Score = Score(0)
+
     fun canReceiveCard(): Boolean {
         return this.score.canReceiveCard()
     }
 
     fun receiveCard(card: TrumpCard) {
         this.cards.add(card)
-        this.score.addNumber(card)
+        card.plusBaseValue(score)
     }
 
-    fun getTotalScore(): Int {
-        return TrumpCard.getTotalScore(this.cards)
+    fun getTotalScore(): Score {
+        return TrumpCard.getTotalScore(this.cards, this.score)
     }
 
     fun getCardNames(): List<String> {
         return this.cards.stream()
-            .map { card -> card.getName() }
+            .map { card -> card.getFullName() }
             .toList()
     }
 }
