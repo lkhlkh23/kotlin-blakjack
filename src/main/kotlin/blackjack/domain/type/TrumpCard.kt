@@ -3,7 +3,6 @@ package blackjack.domain.type
 import blackjack.domain.Score
 
 enum class TrumpCard constructor(private val shape: String, private val letter: String, private val number: Int, private val bonus: Int) {
-    HEART_1("하트", "1", 1, 0),
     HEART_2("하트", "2", 2, 0),
     HEART_3("하트", "3", 3, 0),
     HEART_4("하트", "4", 4, 0),
@@ -17,7 +16,6 @@ enum class TrumpCard constructor(private val shape: String, private val letter: 
     HEART_QUEEN("하트", "Q", 10, 0),
     HEART_JACK("하트", "J", 10, 0),
     HEART_KING("하트", "K", 10, 0),
-    DIAMOND_1("다이아몬드", "1", 1, 0),
     DIAMOND_2("다이아몬드", "2", 2, 0),
     DIAMOND_3("다이아몬드", "3", 3, 0),
     DIAMOND_4("다이아몬드", "4", 4, 0),
@@ -31,7 +29,6 @@ enum class TrumpCard constructor(private val shape: String, private val letter: 
     DIAMOND_QUEEN("다이아몬드", "Q", 10, 0),
     DIAMOND_JACK("다이아몬드", "J", 10, 0),
     DIAMOND_KING("다이아몬드", "K", 10, 0),
-    SPADE_1("스페이드", "1", 1, 0),
     SPADE_2("스페이드", "2", 2, 0),
     SPADE_3("스페이드", "3", 3, 0),
     SPADE_4("스페이드", "4", 4, 0),
@@ -45,7 +42,6 @@ enum class TrumpCard constructor(private val shape: String, private val letter: 
     SPADE_QUEEN("스페이드", "Q", 10, 0),
     SPADE_JACK("스페이드", "J", 10, 0),
     SPADE_KING("스페이드", "K", 10, 0),
-    CLUB_1("클로바", "1", 1, 0),
     CLUB_2("클로바", "2", 2, 0),
     CLUB_3("클로바", "3", 3, 0),
     CLUB_4("클로바", "4", 4, 0),
