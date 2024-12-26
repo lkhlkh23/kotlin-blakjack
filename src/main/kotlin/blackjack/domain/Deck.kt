@@ -8,8 +8,8 @@ class Deck {
     private val cards: Queue<TrumpCard> = LinkedList()
 
     init {
-        for (card in cards) {
-            this.cards.add(card)
+        for (card in TrumpCard.entries.shuffled()) {
+            this.cards.add(card);
         }
     }
 
