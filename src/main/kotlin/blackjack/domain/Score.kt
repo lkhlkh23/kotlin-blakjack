@@ -1,10 +1,8 @@
 package blackjack.domain
 
-class Score constructor(var score: Int) {
-    companion object {
-        @JvmStatic
-        private val SCORE_LIMIT: Int = 21
-    }
+class Score (score: Int = 0) {
+    var score: Int = score
+        private set
 
     fun canReceiveCard(): Boolean {
         return this.score < SCORE_LIMIT
@@ -18,5 +16,9 @@ class Score constructor(var score: Int) {
         if (this.score + score <= SCORE_LIMIT) {
             this.score += score
         }
+    }
+
+    companion object {
+        private const val SCORE_LIMIT: Int = 21
     }
 }
