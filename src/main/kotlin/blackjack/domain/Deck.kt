@@ -5,13 +5,9 @@ import java.util.LinkedList
 import java.util.Queue
 
 class Deck {
-    private var cards: Queue<TrumpCard> = LinkedList()
+    private val cards: Queue<TrumpCard> = LinkedList(TrumpCard.entries.shuffled())
 
-    init {
-        this.cards = LinkedList(TrumpCard.entries.shuffled())
-    }
-
-    fun drawCard(): TrumpCard {
+    fun draw(): TrumpCard {
         return this.cards.poll()
     }
 }

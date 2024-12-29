@@ -2,9 +2,7 @@ package blackjack.domain
 
 import blackjack.domain.type.TrumpCard
 
-class Player(val name: String) {
-    val cards: ArrayList<TrumpCard> = ArrayList()
-    val score: Score = Score(0)
+class Player(val name: String, val cards: ArrayList<TrumpCard> = ArrayList(), val score: Score = Score()) {
 
     fun canReceiveCard(): Boolean {
         return this.score.canReceiveCard()

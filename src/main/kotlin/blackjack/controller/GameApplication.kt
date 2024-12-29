@@ -2,22 +2,20 @@ package blackjack.controller
 
 import blackjack.domain.Deck
 import blackjack.domain.Player
-import blackjack.view.GameAttendanceView
-import blackjack.view.GamePlayView
-import blackjack.view.GamePrepareView
-import blackjack.view.GameResultView
+import blackjack.view.getPlayers
+import blackjack.view.playTurnsForAll
+import blackjack.view.prepare
+import blackjack.view.showScoreForAll
 
-class GameApplication {
-    fun run() {
-        val players: List<Player> = GameAttendanceView.getPlayers()
-        val deck: Deck = Deck()
+fun run() {
+    val players: List<Player> = getPlayers()
+    val deck: Deck = Deck()
 
-        GamePrepareView.prepare(players, deck)
-        GamePlayView.playTurnsForAll(players, deck)
-        GameResultView.showScoreForAll(players)
-    }
+    prepare(players, deck)
+    playTurnsForAll(players, deck)
+    showScoreForAll(players)
 }
 
 fun main() {
-    GameApplication().run()
+    run()
 }
