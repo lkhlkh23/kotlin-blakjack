@@ -57,7 +57,7 @@ enum class TrumpCard constructor(private val shape: String, private val letter: 
     CLUB_KING("클로바", "K", 10, 0),
     ;
 
-    fun plusBaseValue(score: Score) {
+    fun plusBaseValue(score: Score): Score {
         return score.plusScore(this.number)
     }
 
@@ -66,16 +66,11 @@ enum class TrumpCard constructor(private val shape: String, private val letter: 
     }
 
     companion object {
-        @JvmStatic
         fun getTotalScore(
             cards: List<TrumpCard>,
             score: Score,
         ): Score {
-            for (card in cards) {
-                score.plusScoreIfLessLimit(card.bonus)
-            }
-
-            return score
+            return cards.fold(score) { acc, card -> acc.plusScoreIfLessLimit(card.bonus) }
         }
     }
 }

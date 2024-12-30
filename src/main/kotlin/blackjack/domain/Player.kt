@@ -1,25 +1,15 @@
 package blackjack.domain
 
-import blackjack.domain.type.TrumpCard
-
-class Player(val name: String, val cards: ArrayList<TrumpCard> = ArrayList(), val score: Score = Score()) {
-
-    fun canReceiveCard(): Boolean {
-        return this.score.canReceiveCard()
+class Player(name: String) : Member(name, ArrayList(), Score.from(0)) {
+    override fun canReceiveCard(): Boolean {
+        return this.score.canReceiveCard(SCORE_LIMIT)
     }
 
-    fun receiveCard(card: TrumpCard) {
-        this.cards.add(card)
-        card.plusBaseValue(score)
+    override fun isDealer(): Boolean {
+        return false
     }
 
-    fun getTotalScore(): Score {
-        return TrumpCard.getTotalScore(this.cards, this.score)
-    }
-
-    fun getCardNames(): List<String> {
-        return this.cards.stream()
-            .map { card -> card.getFullName() }
-            .toList()
+    companion object {
+        private const val SCORE_LIMIT: Int = 21
     }
 }
