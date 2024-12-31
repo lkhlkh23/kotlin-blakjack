@@ -1,7 +1,6 @@
 package blackjack.domain
 
 import blackjack.domain.type.TrumpCard
-import java.lang.Exception
 import java.util.*
 
 class Deck {

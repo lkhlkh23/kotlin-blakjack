@@ -13,8 +13,10 @@ object PlayerGameView {
         }
     }
 
-    private fun playTurns(member: Member,
-                          deck: Deck) {
+    private fun playTurns(
+        member: Member,
+        deck: Deck,
+    ) {
         while (isPlay(member)) {
             playTurn(member, deck)
         }

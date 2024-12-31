@@ -21,8 +21,17 @@ class Score private constructor(val score: Int = 0) {
         return this.score > SCORE_LIMIT
     }
 
-    fun isCloserLimit(score: Score) : Boolean {
+    fun isCloserLimit(score: Score): Boolean {
         return SCORE_LIMIT - this.score < SCORE_LIMIT - score.score
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Score
+
+        return score == other.score
     }
 
     companion object {

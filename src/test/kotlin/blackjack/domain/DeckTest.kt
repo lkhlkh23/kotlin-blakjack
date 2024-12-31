@@ -2,8 +2,6 @@ package blackjack.domain
 
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
-import java.lang.Exception
 
 class DeckTest {
     @Test
@@ -11,5 +9,4 @@ class DeckTest {
         val deck: Deck = Deck()
         assertNotNull(deck.draw())
     }
-
 }

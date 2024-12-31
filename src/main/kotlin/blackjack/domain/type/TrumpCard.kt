@@ -2,7 +2,7 @@ package blackjack.domain.type
 
 import blackjack.domain.Score
 
-enum class TrumpCard constructor(private val shape: String, private val letter: String, private val number: Int, private val bonus: Int) {
+enum class TrumpCard(private val shape: String, private val letter: String, private val number: Int, private val bonus: Int) {
     HEART_2("하트", "2", 2, 0),
     HEART_3("하트", "3", 3, 0),
     HEART_4("하트", "4", 4, 0),
@@ -57,7 +57,7 @@ enum class TrumpCard constructor(private val shape: String, private val letter: 
     CLUB_KING("클로바", "K", 10, 0),
     ;
 
-    fun plusBaseValue(score: Score) : Score{
+    fun plusBaseValue(score: Score): Score {
         return score.plusScore(this.number)
     }
 
