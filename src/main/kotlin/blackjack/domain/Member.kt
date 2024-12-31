@@ -34,4 +34,17 @@ class Member(val name : String, val type: MemberType, private val cards : Mutabl
     fun getCardNames(count: Int): List<String> {
         return getCardNames().subList(0, count);
     }
+
+    fun getRecord(members: List<Member>): String {
+        var record = Record()
+        for (member in members) {
+            if (member.type == this.type) {
+                continue
+            }
+
+            record = record.calculate(this.getTotalScore(), member.getTotalScore())
+        }
+
+        return record.getRecord()
+    }
 }

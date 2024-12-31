@@ -17,6 +17,14 @@ class Score private constructor(val score: Int = 0) {
         return this
     }
 
+    fun isExceedLimit(): Boolean {
+        return this.score > SCORE_LIMIT
+    }
+
+    fun isCloserLimit(score: Score) : Boolean {
+        return SCORE_LIMIT - this.score < SCORE_LIMIT - score.score
+    }
+
     companion object {
         private const val SCORE_LIMIT: Int = 21
 
