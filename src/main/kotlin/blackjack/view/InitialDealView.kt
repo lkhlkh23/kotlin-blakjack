@@ -35,14 +35,12 @@ private fun dealCardsForSingle(member: Member, deck: Deck) {
 }
 
 private fun announce(member: Member) {
-    val particle = getParticle(member);
-    println("${member.name} $particle : ${member.cards[0].getFullName()}, ${member.cards[1].getFullName()}")
-}
-
-private fun getParticle(member: Member) :String {
     if (member.isDealer()) {
-        return ""
+        val cardNames = format(member.getCardNames(1))
+        println("${member.name} : $cardNames")
+        return
     }
 
-    return "카드"
+    val cardNames = format(member.getCardNames(1))
+    println("${member.name} 카드 : $cardNames")
 }

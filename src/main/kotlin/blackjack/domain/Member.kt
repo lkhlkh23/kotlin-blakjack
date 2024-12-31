@@ -1,8 +1,21 @@
 package blackjack.domain
 
+import blackjack.domain.type.MemberType
 import blackjack.domain.type.TrumpCard
 
-abstract class Member(val name: String, val cards: ArrayList<TrumpCard> = ArrayList(), var score: Score = Score.from(0)) {
+class Member(val name : String, val type: MemberType, private val cards : MutableList<TrumpCard> = ArrayList(), score : Score = Score.from(0)) {
+
+    var score: Score = score
+        private set
+
+    fun canReceiveCard(): Boolean {
+        return this.score.canReceiveCard(type.drawable)
+    }
+
+    fun isDealer(): Boolean {
+        return type == MemberType.DEALER;
+    }
+
     fun receiveCard(card: TrumpCard) {
         this.cards.add(card)
         this.score = card.plusBaseValue(score)
@@ -18,7 +31,7 @@ abstract class Member(val name: String, val cards: ArrayList<TrumpCard> = ArrayL
             .toList()
     }
 
-    abstract fun canReceiveCard(): Boolean
-
-    abstract fun isDealer(): Boolean
+    fun getCardNames(count: Int): List<String> {
+        return getCardNames().subList(0, count);
+    }
 }

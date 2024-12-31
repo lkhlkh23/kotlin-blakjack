@@ -57,7 +57,7 @@ enum class TrumpCard constructor(private val shape: String, private val letter: 
     CLUB_KING("클로바", "K", 10, 0),
     ;
 
-    fun plusBaseValue(score: Score): Score {
+    fun plusBaseValue(score: Score) : Score{
         return score.plusScore(this.number)
     }
 
