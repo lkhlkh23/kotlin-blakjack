@@ -6,7 +6,7 @@ import blackjack.domain.type.TrumpCard
 class Member(
     val name: String,
     val type: MemberType,
-    val cards: MutableList<TrumpCard> = ArrayList(),
+    val cards: Cards = Cards(),
     score: Score =
         Score.from(
             0,
@@ -29,13 +29,11 @@ class Member(
     }
 
     fun getTotalScore(): Score {
-        return TrumpCard.getTotalScore(this.cards, this.score)
+        return this.cards.getTotalScore(this.score)
     }
 
     fun getCardNames(): List<String> {
-        return this.cards.stream()
-            .map { card -> card.getFullName() }
-            .toList()
+        return this.cards.getCardNames()
     }
 
     fun getCardNames(count: Int): List<String> {

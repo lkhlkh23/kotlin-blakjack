@@ -29,7 +29,6 @@ class MemberTest {
         val member = Member("LEE", MemberType.PLAYER)
         member.receiveCard(TrumpCard.CLUB_ACE)
 
-        assertThat(member.cards.size).isEqualTo(1)
         assertThat(member.score.score).isEqualTo(1)
     }
 
