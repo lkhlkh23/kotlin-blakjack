@@ -2,16 +2,14 @@ package blackjack.domain.type
 
 import blackjack.domain.Score
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
 class TrumpCardTest {
     @Test
     fun test_plusBaseValue() {
-        val score = Score(10)
-        TrumpCard.CLUB_KING.plusBaseValue(score)
-        assertThat(score.score).isEqualTo(20)
+        val score = Score.from(10)
+        assertThat(TrumpCard.CLUB_KING.plusBaseValue(score).score).isEqualTo(20)
     }
 
     @Test
@@ -23,7 +21,7 @@ class TrumpCardTest {
     @Test
     @DisplayName("총 점수는 21 초과하지 않도록 리턴")
     fun test_getTotalScore_1() {
-        val score = Score(11)
+        val score = Score.from(11)
         val cards: List<TrumpCard> = listOf(TrumpCard.CLUB_ACE, TrumpCard.SPADE_ACE, TrumpCard.DIAMOND_ACE, TrumpCard.HEART_ACE)
         assertThat(TrumpCard.getTotalScore(cards, score).score).isEqualTo(21)
     }
@@ -31,7 +29,7 @@ class TrumpCardTest {
     @Test
     @DisplayName("총 점수는 21 초과하지 않도록 리턴")
     fun test_getTotalScore_2() {
-        val score = Score(12)
+        val score = Score.from(12)
         val cards: List<TrumpCard> = listOf(TrumpCard.CLUB_ACE, TrumpCard.SPADE_ACE, TrumpCard.DIAMOND_ACE, TrumpCard.HEART_ACE)
         assertThat(TrumpCard.getTotalScore(cards, score).score).isEqualTo(12)
     }
