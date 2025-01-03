@@ -1,7 +1,5 @@
-package blackjack.domain.type
+package blackjack.domain
 
-import blackjack.domain.Record
-import blackjack.domain.Score
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
@@ -65,5 +63,10 @@ class RecordTest {
 
         val record3 = Record(1, 1, 1)
         assertThat(record3.getRecord()).isEqualTo("1승 1무 1패")
+    }
+
+    @Test
+    fun name() {
+        val record = Record(0, 0, 0)
     }
 }

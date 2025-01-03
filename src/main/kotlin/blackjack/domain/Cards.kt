@@ -2,8 +2,7 @@ package blackjack.domain
 
 import blackjack.domain.type.TrumpCard
 
-class Cards(private val cards: MutableList<TrumpCard> = ArrayList()) {
-
+class Cards(private var cards: MutableList<TrumpCard> = mutableListOf()) {
     fun add(card: TrumpCard) {
         this.cards.add(card)
     }

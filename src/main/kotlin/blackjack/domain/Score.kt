@@ -1,6 +1,9 @@
 package blackjack.domain
 
-class Score private constructor(val score: Int = 0) {
+class Score private constructor(score: Int = 0) {
+    var score: Int = score
+        private set
+
     fun canReceiveCard(limit: Int): Boolean {
         return this.score < limit
     }
@@ -32,6 +35,10 @@ class Score private constructor(val score: Int = 0) {
         other as Score
 
         return score == other.score
+    }
+
+    override fun hashCode(): Int {
+        return score
     }
 
     companion object {

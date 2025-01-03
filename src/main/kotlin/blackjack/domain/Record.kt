@@ -1,6 +1,6 @@
 package blackjack.domain
 
-class Record(val win: Int = 0, val loss: Int = 0, val draw: Int = 0) {
+class Record(private val win: Int = 0, private val loss: Int = 0, private val draw: Int = 0) {
     fun calculate(
         origin: Score,
         comparison: Score,
@@ -56,5 +56,12 @@ class Record(val win: Int = 0, val loss: Int = 0, val draw: Int = 0) {
         if (draw != other.draw) return false
 
         return true
+    }
+
+    override fun hashCode(): Int {
+        var result = win
+        result = 31 * result + loss
+        result = 31 * result + draw
+        return result
     }
 }
